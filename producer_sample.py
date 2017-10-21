@@ -28,7 +28,6 @@ def build_queue_integration():
                                             producer_queue_name)
     return message_consumer, message_producer
 
-
 if __name__ == "__main__":
     logging.config.fileConfig('config/logging.conf', disable_existing_loggers=False)
     message_consumer, message_producer = build_queue_integration()
