@@ -48,7 +48,7 @@ def capture_images(save_folder):
     orchestrator = Orchestrator(message_consumer, message_producer)
     orchestrator.start()
 
-    for _, image in enumerate(camera.capture_continuous(raw_capture, format='bgr', use_video_port=True):
+    for _, image in enumerate(camera.capture_continuous(raw_capture, format='bgr', use_video_port=True)):
         # Get the numpy version of the image.
         decoded_image = image.array
         serialized = pickle.dumps(decoded_image, protocol=0)
