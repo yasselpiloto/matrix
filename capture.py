@@ -6,6 +6,7 @@ from messaging.AsyncMessageProducer import AsyncMessageProducer
 from messaging.AsyncMessageConsumer import AsyncMessageConsumer
 from Orchestrator import Orchestrator
 from picamera import PiCamera
+from picamera.array import PiRGBArray
 
 LOGGER = logging.getLogger(__name__)
 
@@ -17,6 +18,7 @@ consumer_queue_name = "image_input"
 producer_exchange_name = "matrix"
 producer_routing_key = ""
 producer_queue_name = "image_input"
+
 
 def build_queue_integration():
 
@@ -35,6 +37,7 @@ def capture_images(save_folder):
     camera.resolution = (320, 240)
     camera.vflip = True
     camera.framerate = 10
+    raw_capture = PiRGBArray(camera, size=(320, 240))
 
     # Warmup...
     time.sleep(2)
