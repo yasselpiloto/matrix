@@ -1,4 +1,5 @@
 import time
+import os
 from picamera import PiCamera
 
 def capture_images(save_folder):
@@ -15,4 +16,4 @@ def capture_images(save_folder):
     for _ in camera.capture_continuous(save_folder + '{timestamp}.jpg', 'jpeg', use_video_port=True):
         pass
 
-capture_images('toma2')
+capture_images(os.environ['CAPTURE_PATH'])
