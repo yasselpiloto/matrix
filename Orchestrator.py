@@ -23,4 +23,5 @@ class Orchestrator(object):
         self._message_producer.stop()
 
     def process_message(self, body):
-        LOGGER.info("consuming message: %s" % body)
+        pass
+        #LOGGER.info("consuming message: %s" % body)
