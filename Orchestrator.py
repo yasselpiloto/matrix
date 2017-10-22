@@ -1,6 +1,11 @@
+import json
 import logging
 import logging.config
 import threading
+import pickle
+import numpy as np
+import io
+
 
 LOGGER = logging.getLogger(__name__)
 
@@ -23,4 +28,10 @@ class Orchestrator(object):
         self._message_producer.stop()
 
     def process_message(self, body):
-        LOGGER.info("consuming message: %s" % body)
+        pass
+        # memfile = io.StringIO()
+        # memfile.write(json.loads(body).encode('latin-1'))
+        # memfile.seek(0)
+        # a = np.load(memfile)
+        # np.save(open("image_queue"), a)
+        # print("message received")

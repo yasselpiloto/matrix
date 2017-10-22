@@ -1,6 +1,4 @@
 import logging
-import numpy as np
-import pickle
 from messaging.AsyncMessageProducer import AsyncMessageProducer
 from messaging.AsyncMessageConsumer import AsyncMessageConsumer
 from Orchestrator import Orchestrator
@@ -14,8 +12,8 @@ exchange_type = "topic"
 consumer_routing_key = ""
 consumer_queue_name = "image_input"
 producer_exchange_name = "matrix"
-producer_routing_key = ""
-producer_queue_name = "image_input"
+producer_routing_key = "cart_events_key"
+producer_queue_name = "cart_events"
 
 def build_queue_integration():
 
@@ -34,6 +32,6 @@ if __name__ == "__main__":
     orchestrator = Orchestrator(message_consumer, message_producer)
     orchestrator.start()
     for i in range(10):
-        a = np.random.rand(31, 1)
-        serialized = pickle.dumps(a, protocol=0)
-        message_producer.publish_message(str(serialized))
+        message_producer.publish_message("add,1")
+
+    message_producer.publish_message("checkout")
