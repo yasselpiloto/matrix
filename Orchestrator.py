@@ -29,9 +29,4 @@ class Orchestrator(object):
 
     def process_message(self, body):
         pass
-        # memfile = io.StringIO()
-        # memfile.write(json.loads(body).encode('latin-1'))
-        # memfile.seek(0)
-        # a = np.load(memfile)
-        # np.save(open("image_queue"), a)
-        # print("message received")
+        #LOGGER.info("consuming message: %s" % body)
